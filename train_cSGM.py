@@ -5,6 +5,14 @@ import os
 import utils
 import models
 
+def potential(x):
+    k=5
+    return (x**2 - 1)**2 + (0.2*k - 1)*x
+
+def true_pdf(x):
+    exp_minus_potential_x = np.exp(-potential(x))
+    return exp_minus_potential_x / np.trapz(exp_minus_potential_x, x=x)
+
 def train(xs_in, labels_in, epochs, batch_size, kappa_bound, model_dir_in):
     N_epochs = epochs
     train_size = xs_in.shape[0]
@@ -81,10 +89,3 @@ def train(xs_in, labels_in, epochs, batch_size, kappa_bound, model_dir_in):
         
 
 
-def potential(x):
-    k=5
-    return (x**2 - 1)**2 + (0.2*k - 1)*x
-
-def true_pdf(x):
-    exp_minus_potential_x = np.exp(-potential(x))
-    return exp_minus_potential_x / np.trapz(exp_minus_potential_x, x=x)
