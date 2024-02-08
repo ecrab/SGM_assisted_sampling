@@ -78,3 +78,10 @@ def reverse_sde(rng, N, n_samples, forward_drift, diffusivity, score, ts=train_t
     (x, _), _ = scan(f, (initial, rng), params)
     return x
 
+def potential(x):
+    k=5
+    return (x**2 - 1)**2 + (0.2*k - 1)*x
+
+def true_pdf(x):
+    exp_minus_potential_x = np.exp(-potential(x))
+    return exp_minus_potential_x / np.trapz(exp_minus_potential_x, x=x)
