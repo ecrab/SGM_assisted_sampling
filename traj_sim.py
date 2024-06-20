@@ -50,7 +50,7 @@ def variable_height_dwell(n):
         num_steps: int = n              # Number of steps to integrate.
         dim: int = 2                    # Spatial dimensions.
         dt: float = 1e-2                # Time step length.
-        h, k = 4, 0                     # Variables specifiying the height of barrier and the depth of second well 
+        h, k = 2, 0                     # Variables specifiying the height of barrier and the depth of second well 
         
         def vector_field(x: np.ndarray) -> np.ndarray:
             return np.array([1e-4,

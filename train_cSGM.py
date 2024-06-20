@@ -8,7 +8,7 @@ import models
 def train(xs_in, labels_in, epochs, batch_size, kappa_bound, model_dir_in):
     N_epochs = epochs
     train_size = xs_in.shape[0]
-    batch_size = 20
+    batch_size = 200
     batch_size = min(train_size, batch_size)
     steps_per_epoch = train_size // batch_size
     
@@ -53,7 +53,7 @@ def train(xs_in, labels_in, epochs, batch_size, kappa_bound, model_dir_in):
         losses.append(loss_fn_np)
         mean_loss = np.mean(np.array(losses))
 
-        if k % 500 == 0:
+        if k % 100 == 0:
             print("Epoch %d \t, Loss %f " % (k, mean_loss))
             os.makedirs(os.path.dirname(model_dir), exist_ok=True)
             model_save = os.path.join(model_dir, f'global_step_{k:06d}.pth')

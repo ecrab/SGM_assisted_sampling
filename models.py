@@ -10,30 +10,27 @@ class ScoreNet(nn.Module):
         self.in_dim = in_dim
         self.out_dim = out_dim
 
+        inner_dim = 256
         self.linear = nn.Sequential(
-                nn.Linear(self.in_dim, 64), #layer 1
+                nn.Linear(self.in_dim, inner_dim), #layer 1
                 nn.ReLU(True),
 
-                nn.Linear(64, 128), #layer 2
+                nn.Linear(inner_dim, inner_dim), #layer 2
                 nn.ReLU(True),
 
-                nn.Linear(128, 256), #layer 3
+                nn.Linear(inner_dim, inner_dim), #layer 3
                 nn.ReLU(True),
             
-                nn.Linear(256, 512), #layer 4
+                nn.Linear(inner_dim, inner_dim), #layer 4
                 nn.ReLU(True),
             
-                nn.Linear(512, 256), #layer 5
+                nn.Linear(inner_dim, inner_dim), #layer 5
                 nn.ReLU(True),
             
-                nn.Linear(256, 128), #layer 6
-                nn.ReLU(True),
-            
-                nn.Linear(128, 64), #layer 7
-                nn.ReLU(True),
-            
-                nn.Linear(64, self.out_dim), #layer 10
+
+                nn.Linear(inner_dim, self.out_dim), #layer 6
         )
+        
     
     
 
