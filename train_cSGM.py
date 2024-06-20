@@ -8,7 +8,7 @@ import models
 def train(xs_in, labels_in, epochs, batch_size, kappa_bound, model_dir_in):
     N_epochs = epochs
     train_size = xs_in.shape[0]
-    batch_size = 200
+    batch_size = batch_size
     batch_size = min(train_size, batch_size)
     steps_per_epoch = train_size // batch_size
     
